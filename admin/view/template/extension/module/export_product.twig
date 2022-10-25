@@ -1,0 +1,521 @@
+{{ header }}{{ column_left }}
+<div id="content">
+  <div class="page-header">
+    <div class="container-fluid">
+      <h1>{{ text_export_product }}</h1>
+      <ul class="breadcrumb">
+        {% for breadcrumb in breadcrumbs %}
+        <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+  <div class="container-fluid">
+    {% if error_warning %}
+    <div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> {{ error_warning }}
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+    </div>
+    {% endif %}
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title"><i class="fa fa-pencil"></i> {{ text_edit }}</h3>
+      </div>
+      <div class="panel-body">
+        <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-module" class="form-horizontal">
+          
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ select_product }}</label>
+            <div class="col-sm-10">
+              <div class="well well-sm" style="height: 150px; overflow: auto;">
+                <div class="checkbox">
+                  <label>
+                  {% if module_product_product_id_status %}
+                    <input type="checkbox" name="module_product_product_id_status"  checked="checked" />
+                     {{ text_product_id }}
+                  {% else %}
+                    <input type="checkbox" name="module_product_product_id_status"  />
+                     {{ text_product_id }}
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_product_name_status %}
+                    <input type="checkbox" name="module_product_product_name_status"  checked="checked" />
+                     {{ text_product_name }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_product_name_status"  />
+                     {{ text_product_name }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_image_status %}
+                    <input type="checkbox" name="module_product_image_status"  checked="checked" />
+                     {{ text_image }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_image_status"  />
+                     {{ text_image }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_description_status %}
+                    <input type="checkbox" name="module_product_description_status"  checked="checked" />
+                     {{ text_description }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_description_status"  />
+                     {{ text_description }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_model_status %}
+                    <input type="checkbox" name="module_product_model_status"  checked="checked" />
+                     {{ text_model }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_model_status"  />
+                     {{ text_model }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_quantity_status %}
+                    <input type="checkbox" name="module_product_quantity_status"  checked="checked" />
+                     {{ text_quantity }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_quantity_status"  />
+                     {{ text_quantity }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_price_status %}
+                    <input type="checkbox" name="module_product_price_status"  checked="checked" />
+                     {{ text_price }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_price_status"  />
+                     {{ text_price }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_stock_status_id_status %}
+                    <input type="checkbox" name="module_product_stock_status_id_status"  checked="checked" />
+                     {{ text_stock_status_id }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_stock_status_id_status"  />
+                     {{ text_stock_status_id }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_stock_status_status %}
+                     <input type="checkbox" name="module_product_stock_status_status"  checked="checked" />
+                      {{ text_stock_status }}
+                  {% else %}
+                     <input type="checkbox" name="module_product_stock_status_status"  />
+                      {{ text_stock_status }}
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_manufacturer_id_status %}
+                     <input type="checkbox" name="module_product_manufacturer_id_status"  checked="checked" />
+                      {{ text_manufacturer_id }} 
+                  {% else %}
+                     <input type="checkbox" name="module_product_manufacturer_id_status"  />
+                      {{ text_manufacturer_id }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_manufaturer_name_status %}
+                     <input type="checkbox" name="module_product_manufaturer_name_status"  checked="checked" />
+                      {{ text_manufaturer_name }} 
+                  {% else %}
+                     <input type="checkbox" name="module_product_manufaturer_name_status"  />
+                      {{ text_manufaturer_name }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_related_product_status %}
+                     <input type="checkbox" name="module_product_related_product_status"  checked="checked" />
+                      {{ text_related_product }} 
+                  {% else %}
+                     <input type="checkbox" name="module_product_related_product_status"  />
+                      {{ text_related_product }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_product_status_status %}
+                     <input type="checkbox" name="module_product_product_status_status"  checked="checked" />
+                      {{ text_product_status }} 
+                  {% else %}
+                     <input type="checkbox" name="module_product_product_status_status"  />
+                      {{ text_product_status }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_viewed_status %}
+                     <input type="checkbox" name="module_product_viewed_status"  checked="checked" />
+                      {{ text_viewed }} 
+                  {% else %}
+                     <input type="checkbox" name="module_product_viewed_status"  />
+                      {{ text_viewed }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_category_status %}
+                     <input type="checkbox" name="module_product_category_status"  checked="checked" />
+                      {{ text_category }} 
+                  {% else %}
+                     <input type="checkbox" name="module_product_category_status"  />
+                      {{ text_category }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_tax_class_id_status %}
+                     <input type="checkbox" name="module_product_tax_class_id_status"  checked="checked" />
+                      {{ text_tax_class_id }} 
+                  {% else %}
+                     <input type="checkbox" name="module_product_tax_class_id_status"  />
+                      {{ text_tax_class_id }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_tax_class_status %}
+                      <input type="checkbox" name="module_product_tax_class_status"  checked="checked" />
+                       {{ text_tax_class }}
+                  {% else %}
+                      <input type="checkbox" name="module_product_tax_class_status"  />
+                       {{ text_tax_class }}
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_sku_status %}
+                      <input type="checkbox" name="module_product_sku_status"  checked="checked" />
+                       {{ text_sku }} 
+                  {% else %}
+                      <input type="checkbox" name="module_product_sku_status"  />
+                       {{ text_sku }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_upc_status %}
+                      <input type="checkbox" name="module_product_upc_status"  checked="checked" />
+                       {{ text_upc }} 
+                  {% else %}
+                      <input type="checkbox" name="module_product_upc_status"  />
+                       {{ text_upc }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_ean_status %}
+                      <input type="checkbox" name="module_product_ean_status"  checked="checked" />
+                       {{ text_ean }} 
+                  {% else %}
+                      <input type="checkbox" name="module_product_ean_status"  />
+                       {{ text_ean }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_jan_status %}
+                      <input type="checkbox" name="module_product_jan_status"  checked="checked" />
+                       {{ text_jan }} 
+                  {% else %}
+                      <input type="checkbox" name="module_product_jan_status"  />
+                       {{ text_jan }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_isbn_status %}
+                      <input type="checkbox" name="module_product_isbn_status"  checked="checked" />
+                       {{ text_isbn }} 
+                  {% else %}
+                      <input type="checkbox" name="module_product_isbn_status"  />
+                       {{ text_isbn }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_mpn_status %}
+                      <input type="checkbox" name="module_product_mpn_status"  checked="checked" />
+                       {{ text_mpn }} 
+                  {% else %}
+                      <input type="checkbox" name="module_product_mpn_status"  />
+                       {{ text_mpn }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_location_status %}
+                      <input type="checkbox" name="module_product_location_status"  checked="checked" />
+                       {{ text_location }} 
+                  {% else %}
+                      <input type="checkbox" name="module_product_location_status"  />
+                       {{ text_location }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_shipping_status %}
+                       <input type="checkbox" name="module_product_shipping_status"  checked="checked" />
+                        {{ text_shipping }}
+                  {% else %}
+                       <input type="checkbox" name="module_product_shipping_status"  />
+                        {{ text_shipping }}
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_points_status %}
+                       <input type="checkbox" name="module_product_points_status"  checked="checked" />
+                        {{ text_points }} 
+                  {% else %}
+                       <input type="checkbox" name="module_product_points_status"  />
+                        {{ text_points }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_weight_status %}
+                       <input type="checkbox" name="module_product_weight_status"  checked="checked" />
+                        {{ text_weight }} 
+                  {% else %}
+                       <input type="checkbox" name="module_product_weight_status"  />
+                        {{ text_weight }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_weight_class_id_status %}
+                       <input type="checkbox" name="module_product_weight_class_id_status"  checked="checked" />
+                        {{ text_weight_class_id }} 
+                  {% else %}
+                       <input type="checkbox" name="module_product_weight_class_id_status"  />
+                        {{ text_weight_class_id }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_weight_class_status %}
+                       <input type="checkbox" name="module_product_weight_class_status"  checked="checked" />
+                        {{ text_weight_class }} 
+                  {% else %}
+                       <input type="checkbox" name="module_product_weight_class_status"  />
+                        {{ text_weight_class }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_length_status %}
+                       <input type="checkbox" name="module_product_length_status"  checked="checked" />
+                        {{ text_length }} 
+                  {% else %}
+                       <input type="checkbox" name="module_product_length_status"  />
+                        {{ text_length }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_width_status %}
+                       <input type="checkbox" name="module_product_width_status"  checked="checked" />
+                        {{ text_width }} 
+                  {% else %}
+                       <input type="checkbox" name="module_product_width_status"  />
+                        {{ text_width }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_height_status %}
+                       <input type="checkbox" name="module_product_height_status"  checked="checked" />
+                        {{ text_height }} 
+                  {% else %}
+                       <input type="checkbox" name="module_product_height_status"  />
+                        {{ text_height }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_length_class_id_status %}
+                        <input type="checkbox" name="module_product_length_class_id_status"  checked="checked" />
+                         {{ text_length_class_id }}
+                  {% else %}
+                        <input type="checkbox" name="module_product_length_class_id_status"  />
+                         {{ text_length_class_id }}
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_length_class_status %}
+                        <input type="checkbox" name="module_product_length_class_status"  checked="checked" />
+                         {{ text_length_class }} 
+                  {% else %}
+                        <input type="checkbox" name="module_product_length_class_status"  />
+                         {{ text_length_class }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_subtract_status %}
+                        <input type="checkbox" name="module_product_subtract_status"  checked="checked" />
+                         {{ text_subtract }} 
+                  {% else %}
+                        <input type="checkbox" name="module_product_subtract_status"  />
+                         {{ text_subtract }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_minimum_status %}
+                        <input type="checkbox" name="module_product_minimum_status"  checked="checked" />
+                         {{ text_minimum }} 
+                  {% else %}
+                        <input type="checkbox" name="module_product_minimum_status"  />
+                         {{ text_minimum }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_sort_order_status %}
+                        <input type="checkbox" name="module_product_sort_order_status"  checked="checked" />
+                         {{ text_sort_order }} 
+                  {% else %}
+                        <input type="checkbox" name="module_product_sort_order_status"  />
+                         {{ text_sort_order }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_tag_status %}
+                        <input type="checkbox" name="module_product_tag_status"  checked="checked" />
+                         {{ text_tag }} 
+                  {% else %}
+                        <input type="checkbox" name="module_product_tag_status"  />
+                         {{ text_tag }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_meta_title_status %}
+                        <input type="checkbox" name="module_product_meta_title_status"  checked="checked" />
+                         {{ text_meta_title }} 
+                  {% else %}
+                        <input type="checkbox" name="module_product_meta_title_status"  />
+                         {{ text_meta_title }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_meta_description_status %}
+                        <input type="checkbox" name="module_product_meta_description_status"  checked="checked" />
+                         {{ text_meta_description }} 
+                  {% else %}
+                        <input type="checkbox" name="module_product_meta_description_status"  />
+                         {{ text_meta_description }} 
+                         {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_meta_keyword_status %}
+                         <input type="checkbox" name="module_product_meta_keyword_status"  checked="checked" />
+                          {{ text_meta_keyword }}
+                  {% else %}
+                         <input type="checkbox" name="module_product_meta_keyword_status"  />
+                          {{ text_meta_keyword }}
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_date_added_status %}
+                         <input type="checkbox" name="module_product_date_added_status"  checked="checked" />
+                          {{ text_date_added }} 
+                  {% else %}
+                         <input type="checkbox" name="module_product_date_added_status"  />
+                          {{ text_date_added }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_date_modified_status %}
+                         <input type="checkbox" name="module_product_date_modified_status"  checked="checked" />
+                          {{ text_date_modified }} 
+                  {% else %}
+                         <input type="checkbox" name="module_product_date_modified_status"  />
+                          {{ text_date_modified }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_date_available_status %}
+                         <input type="checkbox" name="module_product_date_available_status"  checked="checked" />
+                          {{ text_date_available }} 
+                  {% else %}
+                         <input type="checkbox" name="module_product_date_available_status"  />
+                          {{ text_date_available }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_attribute_id_status %}
+                         <input type="checkbox" name="module_product_attribute_id_status"  checked="checked" />
+                          {{ text_attribute_id }} 
+                  {% else %}
+                         <input type="checkbox" name="module_product_attribute_id_status"  />
+                          {{ text_attribute_id }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_attribute_name_status %}
+                         <input type="checkbox" name="module_product_attribute_name_status"  checked="checked" />
+                          {{ text_attribute_name }} 
+                  {% else %}
+                         <input type="checkbox" name="module_product_attribute_name_status"  />
+                          {{ text_attribute_name }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_attribute_value_status %}
+                         <input type="checkbox" name="module_product_attribute_value_status"  checked="checked" />
+                          {{ text_attribute_value }} 
+                  {% else %}
+                         <input type="checkbox" name="module_product_attribute_value_status"  />
+                          {{ text_attribute_value }} 
+                  {% endif %}
+                  </label>
+                </div>
+              </div>
+              <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', true);" class="btn btn-link select-all">{{ text_select_all }}</button> / <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', false);" class="btn btn-link unselect-all">{{ text_unselect_all }}</button></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-status">{{ text_export_product }}</label>
+            <div class="col-sm-10">
+              <a href="{{ href_exportProductData }}" data-toggle="tooltip" title="{{ text_export_product }}" class="btn btn-success">{{ text_export_product }}</a>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label">{{ select_product_images }}</label>
+            <div class="col-sm-10">
+              <div class="well well-sm" style="height: 150px; overflow: auto;">
+                <div class="checkbox">
+                  <label>
+                  {% if module_image_product_id_status %}
+                    <input type="checkbox" name="module_image_product_id_status"  checked="checked" />
+                     {{ text_product_id }}
+                  {% else %}
+                    <input type="checkbox" name="module_image_product_id_status"  />
+                     {{ text_product_id }}
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_additional_images_status %}
+                    <input type="checkbox" name="module_product_additional_images_status"  checked="checked" />
+                     {{ text_additional_image }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_additional_images_status"  />
+                     {{ text_additional_image }} 
+                  {% endif %}
+                  </label>
+                </div>
+              </div>
+              <button type="button"  onclick="$(this).parent().find(':checkbox').prop('checked', true);" class="btn btn-link select-all">{{ text_select_all }}</button> / <button type="button" onclick="$(this).parent().find(':checkbox').prop('checked', false);" class="btn btn-link unselect-all">{{ text_unselect_all }}</button></div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="input-status">{{ text_exportProductImage }}</label>
+            <div class="col-sm-10">
+              <a href="{{ href_exportProductImage }}" data-toggle="tooltip" title="{{ text_exportProductImage }}" class="btn btn-success">{{ text_exportProductImage }}</a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript"><!--
+  $('#form-module').on('change',function(){
+    $.ajax({
+      url:'index.php?route=extension/module/export/productExport&user_token={{ user_token }}',
+      type:'post',
+      data:$('#form-module').serialize(),
+    })
+  })
+  //--></script>
+
+<script type="text/javascript"><!--
+  $('.select-all, .unselect-all').on('click',function(){
+    $.ajax({
+      url:'index.php?route=extension/module/export/productExport&user_token={{ user_token }}',
+      type:'post',
+      data:$('#form-module').serialize(),
+    })
+  })
+  //--></script>
+{{ footer }}
