@@ -10,7 +10,8 @@ $_['text_success']                          = 'Success: You have modified export
 $_['text_edit']                             = 'Edit Export Module';
 $_['text_product_id']                       = 'Product Id';
 $_['text_product_name']                     = 'Product Name';
-$_['text_image']                            = 'Image';
+$_['text_image_path']                       = 'Image Path';
+$_['text_image_url']                        = 'Image URL';
 $_['text_description']                      = 'Description';
 $_['text_model']                            = 'Model';
 $_['text_quantity']                         = 'Quantity';
@@ -55,7 +56,9 @@ $_['text_date_available']                   = 'Date Available';
 $_['text_attribute_id']                     = 'Attribute Id';
 $_['text_attribute_name']                   = 'Attribute Name';
 $_['text_attribute_value']                  = 'Attribute Value';
-$_['text_additional_image']                 = 'Additional Image';
+$_['text_additional_image_path']            = 'Additional Image Path';
+$_['text_additional_image_url']             = 'Additional Image URL';
+$_['text_additional_image']                 = 'Additional Images';
 
 
 

@@ -47,12 +47,21 @@
                   {% endif %}
                   </label><br>
                   <label>
-                  {% if module_product_image_status %}
-                    <input type="checkbox" name="module_product_image_status"  checked="checked" />
-                     {{ text_image }} 
+                  {% if module_product_image_path_status %}
+                    <input type="checkbox" name="module_product_image_path_status"  checked="checked" />
+                     {{ text_image_path }} 
                   {% else %}
-                    <input type="checkbox" name="module_product_image_status"  />
-                     {{ text_image }} 
+                    <input type="checkbox" name="module_product_image_path_status"  />
+                     {{ text_image_path }} 
+                  {% endif %}
+                  </label><br>
+                  <label>
+                  {% if module_product_image_url_status %}
+                    <input type="checkbox" name="module_product_image_url_status"  checked="checked" />
+                     {{ text_image_url }} 
+                  {% else %}
+                    <input type="checkbox" name="module_product_image_url_status"  />
+                     {{ text_image_url }} 
                   {% endif %}
                   </label><br>
                   <label>
@@ -476,12 +485,19 @@
                   {% endif %}
                   </label><br>
                   <label>
+                     {{ text_additional_image }} 
+                  </label><br>
+                  <label>
                   {% if module_product_additional_images_status %}
-                    <input type="checkbox" name="module_product_additional_images_status"  checked="checked" />
-                     {{ text_additional_image }} 
+                    <input type="radio" name="module_product_additional_images_status" value="1" checked="checked" />
+                     {{ text_additional_image_path }} <br>
+                     <input type="radio" name="module_product_additional_images_status" value="0"/>
+                     {{ text_additional_image_url }} 
                   {% else %}
-                    <input type="checkbox" name="module_product_additional_images_status"  />
-                     {{ text_additional_image }} 
+                    <input type="radio" name="module_product_additional_images_status" value="1"/>
+                     {{ text_additional_image_path }} <br>
+                     <input type="radio" name="module_product_additional_images_status" value="0" checked="checked">
+                     {{ text_additional_image_url }}  
                   {% endif %}
                   </label>
                 </div>

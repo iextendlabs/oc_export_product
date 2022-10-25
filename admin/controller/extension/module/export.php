@@ -69,7 +69,8 @@ class ControllerExtensionModuleExport extends Controller {
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
             $this->model_setting_setting->editSetting('module_product_product_id', $this->request->post);
 			$this->model_setting_setting->editSetting('module_product_product_name', $this->request->post);
-			$this->model_setting_setting->editSetting('module_product_image', $this->request->post);
+			$this->model_setting_setting->editSetting('module_product_image_path', $this->request->post);
+			$this->model_setting_setting->editSetting('module_product_image_url', $this->request->post);
 			$this->model_setting_setting->editSetting('module_product_description', $this->request->post);
 			$this->model_setting_setting->editSetting('module_product_model', $this->request->post);
 			$this->model_setting_setting->editSetting('module_product_quantity', $this->request->post);
@@ -151,10 +152,16 @@ class ControllerExtensionModuleExport extends Controller {
 			$data['module_product_product_name_status'] = $this->config->get('module_product_product_name_status');
 		}
 
-		if (isset($this->request->post['module_product_image_status'])) {
-			$data['module_product_image_status'] = $this->request->post['module_product_image_status'];
+		if (isset($this->request->post['module_product_image_path_status'])) {
+			$data['module_product_image_path_status'] = $this->request->post['module_product_image_path_status'];
 		} else {
-			$data['module_product_image_status'] = $this->config->get('module_product_image_status');
+			$data['module_product_image_path_status'] = $this->config->get('module_product_image_path_status');
+		}
+
+		if (isset($this->request->post['module_product_image_url_status'])) {
+			$data['module_product_image_url_status'] = $this->request->post['module_product_image_url_status'];
+		} else {
+			$data['module_product_image_url_status'] = $this->config->get('module_product_image_url_status');
 		}
 
 		if (isset($this->request->post['module_product_description_status'])) {
@@ -471,8 +478,11 @@ class ControllerExtensionModuleExport extends Controller {
 		if ($this->config->get('module_product_product_name_status')) {
 			$header[]= 'Name';
 		}
-		if ($this->config->get('module_product_image_status')) {
-			$header[]= 'Image';
+		if ($this->config->get('module_product_image_path_status')) {
+			$header[]= 'Image Path';
+		}
+		if ($this->config->get('module_product_image_url_status')) {
+			$header[]= 'Image URL';
 		}
 		if ($this->config->get('module_product_description_status')) {
 			$header[]= 'Description';
@@ -621,8 +631,11 @@ class ControllerExtensionModuleExport extends Controller {
 			if ($this->config->get('module_product_product_name_status')) {
 				$export_data[]= $result['product_name'];
 			}
-			if ($this->config->get('module_product_image_status')) {
+			if ($this->config->get('module_product_image_path_status')) {
 				$export_data[]= $result['image'];
+			}
+			if ($this->config->get('module_product_image_url_status')) {
+				$export_data[]= HTTP_CATALOG.'image/'.$result['image'];
 			}
 			if ($this->config->get('module_product_description_status')) {
 				$export_data[]= strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'));
@@ -787,8 +800,10 @@ class ControllerExtensionModuleExport extends Controller {
 		if ($this->config->get('module_image_product_id_status')) {
 			$header[]= 'Product Id';
 		}
-		if ($this->config->get('module_product_additional_images_status')) {
-			$header[]= 'Image';
+		if ($this->config->get('module_product_additional_images_status') == 1) {
+			$header[]= 'Image Path';
+		}else{
+			$header[]= 'Image URL';
 		}
 
 		fputcsv($file,$header);
@@ -802,8 +817,16 @@ class ControllerExtensionModuleExport extends Controller {
 			if ($this->config->get('module_image_product_id_status')) {
 				$export_data[]= $result['product_id'];
 			}
-			if ($this->config->get('module_product_additional_images_status')) {
-				$export_data[]= $this->model_extension_module_export->getProductImage($result['product_id']);
+			if ($this->config->get('module_product_additional_images_status') == 1) {
+				$additionalImages= $this->model_extension_module_export->getAdditionalImage($result['product_id']);
+				foreach($additionalImages as $additionalImage){
+					$export_data[]= $additionalImage['image'];
+				}
+			}else{
+				$additionalImages= $this->model_extension_module_export->getAdditionalImage($result['product_id']);
+				foreach($additionalImages as $additionalImage){
+					$export_data[]= HTTP_CATALOG.'image/'.$additionalImage['image'];
+				}
 			}
 			fputcsv($file,$export_data);
 		} 

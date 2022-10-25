@@ -18,9 +18,9 @@ class ModelExtensionModuleExport extends Model {
 		return $query->row['related_product'];
 	}
 
-	public function getProductImage($product_id) {
-		$query = $this->db->query("SELECT GROUP_CONCAT(pi.image) AS image FROM oc_product_image pi WHERE pi.product_id = '" . (int)$product_id . "'");
+	public function getAdditionalImage($product_id) {
+		$query = $this->db->query("SELECT image FROM " . DB_PREFIX . "product_image WHERE product_id = '" . (int)$product_id . "'");
 
-		return $query->row['image'];
+		return $query->rows;
 	}
 }
